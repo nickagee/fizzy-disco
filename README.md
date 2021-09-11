@@ -33,3 +33,7 @@ networks:
         ipv4_address: 172.0.10.10
 ...
 ```
+
+The connection information should look similar to the image below.
+
+![Server Connection Information](docs/server_connection.png)
