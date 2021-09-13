@@ -413,4 +413,38 @@ INNER JOIN departments d
 ON e.department = d.department
 WHERE e.email IS NOT NULL;
 
+--UNION and UNION ALL
+SELECT department
+FROM employees
+UNION
+SELECT department
+FROM departments;
 
+
+SELECT department
+FROM employees
+UNION ALL
+SELECT department
+FROM departments;
+
+--EXCEPT
+--Returns the departments that are in the employees.department table that does exists in the departments.department table
+SELECT department
+FROM employees
+EXCEPT --MINUS in Oracle DBs
+SELECT department
+FROM departments;
+
+--Returns the departments from teh departments table that doesn't exists in the employees table.
+SELECT DISTINCT department
+FROM departments
+EXCEPT --MINUS in Oracle DBs
+SELECT DISTINCT department
+FROM employees;
+
+SELECT DISTINCT e.department, COUNT(e.employee_id)
+FROM employees e
+GROUP BY e.department
+UNION ALL
+SELECT 'TOTAL', COUNT(employee_id)
+from employees;
