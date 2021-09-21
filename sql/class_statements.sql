@@ -413,6 +413,17 @@ INNER JOIN departments d
 ON e.department = d.department
 WHERE e.email IS NOT NULL;
 
+
+SELECT first_name, country
+FROM employees INNER JOIN regions
+ON employees.region_id = regions.region_id;
+
+SELECT first_name, email, division, country
+FROM employees INNER JOIN departments
+ON employees.department = departments.department
+INNER JOIN regions ON employees.region_id = regions.region_id
+WHERE email IS NOT NULL;
+
 --UNION and UNION ALL
 SELECT department
 FROM employees
@@ -448,3 +459,24 @@ GROUP BY e.department
 UNION ALL
 SELECT 'TOTAL', COUNT(employee_id)
 from employees;
+
+
+--MORE JOINS
+SELECT first_name, country
+FROM employees INNER JOIN regions
+ON employees.region_id = regions.region_id;
+
+SELECT first_name, email, division, country
+FROM employees INNER JOIN departments
+ON employees.department = departments.department
+INNER JOIN regions ON employees.region_id = regions.region_id
+WHERE email IS NOT NULL;
+
+SELECT DISTINCT department
+FROM employees
+
+SELECT DISTINCT department
+FROM departments
+
+SELECT DISTINCT employees.department, departments.department
+FROM employees INNER JOIN departments on employees.department = departments.department
